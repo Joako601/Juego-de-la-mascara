@@ -5,8 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://hud.tscn" id="2_uxd1d"]
 [ext_resource type="PackedScene" uid="uid://kpo6bixupad6" path="res://escenas/soldier1.tscn" id="3_imiid"]
 [ext_resource type="AudioStream" uid="uid://cus47ug5dwkqd" path="res://escenas/Mazmorras del Eco Antiguo.mp3" id="5_hxpc2"]
+<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://c26cbgovfq4d6" path="res://Assets/enemies/Idle_edit.png" id="6_hytxr"]
 [ext_resource type="Script" uid="uid://hkbc51sctidd" path="res://escenas/hechizero.gd" id="6_lgbs2"]
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 
 [sub_resource type="Gradient" id="Gradient_hxpc2"]
 offsets = PackedFloat32Array(0.8701299, 0.9025974)
@@ -19,6 +22,7 @@ colors = PackedColorArray(0.3019608, 0, 0, 1, 0.3254902, 0, 0, 1, 0.3764706, 0, 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hytxr"]
 gradient = SubResource("Gradient_arkap")
 
+<<<<<<< HEAD
 [sub_resource type="AtlasTexture" id="AtlasTexture_hytxr"]
 atlas = ExtResource("6_hytxr")
 region = Rect2(0, 0, 250, 168)
@@ -79,6 +83,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgbs2"]
 size = Vector2(34, 56)
 
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 [node name="Escena principal" type="Node2D" unique_id=533774255]
 
 [node name="HUD" parent="." unique_id=1553573608 instance=ExtResource("2_uxd1d")]
@@ -91,7 +97,11 @@ position = Vector2(-3, 509)
 [node name="Camera2D" type="Camera2D" parent="Personaje" unique_id=798275895]
 zoom = Vector2(3.8, 3.8)
 limit_left = -160
+<<<<<<< HEAD
 limit_top = -672
+=======
+limit_top = -528
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 limit_right = 144
 limit_bottom = 528
 
@@ -111,6 +121,7 @@ position = Vector2(-132, 420)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=582719382]
 stream = ExtResource("5_hxpc2")
 autoplay = true
+<<<<<<< HEAD
 
 [node name="Hechizero" type="CharacterBody2D" parent="." unique_id=2069056250]
 script = ExtResource("6_lgbs2")
@@ -126,3 +137,5 @@ frame_progress = 0.1265536
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hechizero" unique_id=1777311961]
 position = Vector2(131, -557)
 shape = SubResource("RectangleShape2D_lgbs2")
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
