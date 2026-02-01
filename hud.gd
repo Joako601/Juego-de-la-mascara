@@ -36,17 +36,24 @@ func _ready():
 				print("  - ", child.name, " (", child.get_class(), ")")
 
 func actualizar_vida(vida_nueva, vida_max):
+<<<<<<< HEAD
+	print("Actualizando HUD - Vida: ", vida_nueva, "/", vida_max)  # Debug
+=======
 	print("Actualizando HUD - Vida: ", vida_nueva, "/", vida_max)
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	
 	health_bar.max_value = vida_max
 	health_bar.value = vida_nueva
 	health_label.text = "Vida: " + str(vida_nueva) + " / " + str(vida_max)
 	
+<<<<<<< HEAD
+=======
 	# Detectar Game Over
 	if vida_nueva <= 0:
 		mostrar_game_over()
 		return
 	
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	var porcentaje = float(vida_nueva) / float(vida_max)
 	
 	if porcentaje > 0.6:
@@ -57,6 +64,15 @@ func actualizar_vida(vida_nueva, vida_max):
 		health_bar.modulate = Color(1.0, 0.2, 0.2)
 
 func mostrar_game_over():
+<<<<<<< HEAD
+	var game_over_label = Label.new()
+	game_over_label.text = "GAME OVER"
+	game_over_label.add_theme_font_size_override("font_size", 72)
+	game_over_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	game_over_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	game_over_label.size = get_viewport().size
+	add_child(game_over_label)
+=======
 	print("¡La máscara ha muerto! Game Over")
 	
 	# Obtener el tamaño de la pantalla
@@ -116,3 +132,4 @@ func _on_restart_pressed():
 	get_tree().paused = false
 	# Cargar la escena principal
 	get_tree().change_scene_to_file("res://escenas/escena_principal.tscn")
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47

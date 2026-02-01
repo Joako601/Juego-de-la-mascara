@@ -26,6 +26,8 @@ signal vida_cambiada(vida_nueva: int, vida_max: int)
 signal mascara_muerta
 # ===========================
 
+<<<<<<< HEAD
+=======
 # Variables para detección de pinchos
 var puede_recibir_daño_pincho = true
 var cooldown_pincho = 1.0
@@ -34,6 +36,7 @@ var cooldown_pincho = 1.0
 var tilemap_pinchos: TileMapLayer
 # ==================================
 
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 # =====Variables Parabola =====
 @onready var linea_guia = $Line2D
 @export var puntos_parabola: int = 25
@@ -42,6 +45,9 @@ var tilemap_pinchos: TileMapLayer
 func _ready() -> void:
 	vida_actual = vida_maxima
 	
+<<<<<<< HEAD
+	# Iniciar pérdida de vida continua
+=======
 	# Esperar un frame para que la escena esté completa
 	await get_tree().process_frame
 	
@@ -56,6 +62,7 @@ func _ready() -> void:
 			metodos.append(m["name"])
 		print("Métodos disponibles: ", metodos)
 	
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	iniciar_perdida_vida()
 
 func _on_area_2d_mouse_entered() -> void:
@@ -99,13 +106,24 @@ func _physics_process(delta: float) -> void:
 	
 	# ===== ANIMACIÓN Y FLIP =====
 	if mascara_agarrada:
+<<<<<<< HEAD
+		# Cuando está siendo arrastrada, mostrar idle
 		$AnimatedSprite2D.play("idle")
 	else:
+		# Cambiar animación según velocidad
+=======
+		$AnimatedSprite2D.play("idle")
+	else:
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 		if velocity.length() > 2:
 			$AnimatedSprite2D.play("moving")
 		else:
 			$AnimatedSprite2D.play("idle")
 		
+<<<<<<< HEAD
+		# Flip horizontal según dirección
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 		if velocity.x > 5:
 			$AnimatedSprite2D.flip_h = false
 		elif velocity.x < -5:
@@ -154,6 +172,8 @@ func _physics_process(delta: float) -> void:
 		
 		if en_suelo and velocity.length() < velocidad_minima:
 			velocity.x = 0
+<<<<<<< HEAD
+=======
 	
 	# ===== DETECCIÓN DE PINCHOS =====
 	_verificar_pinchos()
@@ -184,6 +204,7 @@ func _verificar_pinchos() -> void:
 			get_tree().create_timer(cooldown_pincho).timeout.connect(func(): puede_recibir_daño_pincho = true)
 			return
 # =============================================
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 
 func _process(_delta: float) -> void:
 	if tiempo_ralentizado:
@@ -193,7 +214,11 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.modulate = Color(1, 1, 1)
 		Engine.time_scale = 1.0
 		
+<<<<<<< HEAD
+# Lógica de la parábola
+=======
 	# Lógica de la parábola
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	if mascara_agarrada:
 		linea_guia.show()
 		_actualizar_parabola()
@@ -204,6 +229,19 @@ func _process(_delta: float) -> void:
 
 func recibir_danio(cantidad: int) -> void:
 	vida_actual -= cantidad
+<<<<<<< HEAD
+	vida_actual = max(vida_actual, 0)  # Evita que la vida sea negativa
+	
+	print("¡Daño recibido! Vida actual: ", vida_actual, "/", vida_maxima)
+	
+	# Emitir señal para actualizar UI si la tienes
+	vida_cambiada.emit(vida_actual, vida_maxima)
+	
+	# Efecto visual de daño (parpadeo rojo)
+	_efecto_danio()
+	
+	# Verificar si murió
+=======
 	vida_actual = max(vida_actual, 0)
 	
 	print("¡Daño recibido! Vida actual: ", vida_actual, "/", vida_maxima)
@@ -212,6 +250,7 @@ func recibir_danio(cantidad: int) -> void:
 	
 	_efecto_danio()
 	
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	if vida_actual <= 0:
 		morir()
 
@@ -219,29 +258,53 @@ func morir() -> void:
 	print("¡La máscara ha muerto! Game Over")
 	mascara_muerta.emit()
 	
+<<<<<<< HEAD
+	# Restaurar la escala de tiempo antes de pausar
 	Engine.time_scale = 1.0
 	
+	# Mostrar Game Over en el HUD
+=======
+	Engine.time_scale = 1.0
+	
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	var hud = get_tree().get_first_node_in_group("hud")
 	if hud:
 		hud.mostrar_game_over()
 	
+<<<<<<< HEAD
+	# Pausar el juego después de un momento
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	await get_tree().create_timer(0.1).timeout
 	get_tree().paused = true
 
 func _efecto_danio() -> void:
+<<<<<<< HEAD
+	# Parpadeo rojo al recibir daño
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	$AnimatedSprite2D.modulate = Color(1, 0.3, 0.3)
 	await get_tree().create_timer(0.1).timeout
 	$AnimatedSprite2D.modulate = Color(1, 1, 1)
 
 func curar(cantidad: int) -> void:
 	vida_actual += cantidad
+<<<<<<< HEAD
+	vida_actual = min(vida_actual, vida_maxima)  # No superar la vida máxima
+=======
 	vida_actual = min(vida_actual, vida_maxima)
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	print("¡Curación! Vida actual: ", vida_actual, "/", vida_maxima)
 	vida_cambiada.emit(vida_actual, vida_maxima)
 
 func obtener_vida() -> int:
 	return vida_actual
 
+<<<<<<< HEAD
+# =========================================
+
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 func iniciar_perdida_vida() -> void:
 	while vida_actual > 0:
 		await get_tree().create_timer(1.0).timeout
@@ -249,14 +312,27 @@ func iniciar_perdida_vida() -> void:
 		
 func _actualizar_parabola() -> void:
 	var puntos = []
+<<<<<<< HEAD
+	# Calculamos el vector de disparo igual que en tu función _input
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	var mouse_pos = get_global_mouse_position()
 	var vector_final = mouse_pos - posicion_inicial
 	vector_final = vector_final.limit_length(radio_maximo)
 	
+<<<<<<< HEAD
+	# Usamos el multiplicador 15 que tienes en tu código de lanzamiento
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 	var velocidad_simulada = -vector_final * 15
 	
 	for i in range(puntos_parabola):
 		var t = i * precision_parabola
+<<<<<<< HEAD
+		# x = v0 * t
+		# y = v0 * t + 0.5 * g * t^2
+=======
+>>>>>>> 669bacb36ef352b87e43affb953a2aecbcbb7b47
 		var x = velocidad_simulada.x * t
 		var y = velocidad_simulada.y * t + 0.5 * get_gravity().y * (t * t)
 		puntos.append(Vector2(x, y))
