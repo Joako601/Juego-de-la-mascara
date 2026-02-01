@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckpxfeuy0tr6u" path="res://escenas/estructura.tscn" id="1_733rl"]
 [ext_resource type="PackedScene" uid="uid://bolawt4eeyjv1" path="res://escenas/personaje.tscn" id="2_3tyi2"]
-[ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://escenas/hud.tscn" id="2_uxd1d"]
+[ext_resource type="PackedScene" uid="uid://cjfjn5omsrqkt" path="res://hud.tscn" id="2_uxd1d"]
 [ext_resource type="PackedScene" uid="uid://kpo6bixupad6" path="res://escenas/soldier1.tscn" id="3_imiid"]
 [ext_resource type="AudioStream" uid="uid://cus47ug5dwkqd" path="res://escenas/Mazmorras del Eco Antiguo.mp3" id="5_hxpc2"]
 
